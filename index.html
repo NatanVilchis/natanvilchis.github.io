@@ -5,16 +5,16 @@
   
   <!-- The text field -->
   Seed: 
-  <input type="password"  id="seed">
+  <input type="password"   id="seed">
   <br>
 
-   m: 
-  <input type="password"   id="m">
+  m: 
+  <input type="password"  id="m">
   <br>
   
   
   a: 
-  <input type="password"   id="a">
+  <input type="password" id="a">
   <br>
   
   c: 
@@ -23,30 +23,57 @@
 
   
   steps: 
-  <input type="password"   id="steps">
+  <input type="password"  id="steps">
   <br>
 
   
   n: 
-  <input type="password"   id="n">
+  <input type="password"  id="n">
   <br>
 
   
 
-<!-- The button used to copy the text -->
-<button onclick="generateAndCopy()">Copy text</button>
+  
+<button onclick="generateAndCopy()">Generate and copy</button>
   
   <script>
+  
     function generateAndCopy() {
-  // Get the text field
-  var copyText = document.getElementById("myInput");
+      var semilla = 0
+      var a = 0
+      var c = 0
+      var m = 0
+      // Get the text field
+      var seed = document.getElementById("seed").value;
+      var tempSeed = ""
+      var nTemp = seed.length;
+      for(let i=0; i<nTemp; i++){
+        tempSeed += seed[i].charCodeAt();
+      }
+      
+      
+      semilla = BigInt(tempSeed)
+      
+      
+      
+      
+      m = BigInt(eval(document.getElementById("m").value))
+      a = BigInt(eval(document.getElementById("a").value))
+      c = BigInt(eval(document.getElementById("c").value))
+      steps = BigInt(eval(document.getElementById("steps").value))
+      n = BigInt(eval(document.getElementById("n").value))
+    
+      
+      var result = ""
+      var tempChar = ""
+      for(let i=0; i<n; i++){
+        semilla = (a*semilla+c)%m
+        temp_char = String.fromCharCode( parseInt(steps + BigInt(semilla.toString().substr(0,2)))  )
+        result += temp_char 
+      }
 
-  // Select the text field
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-
-   // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
+      
+  navigator.clipboard.writeText(result);
       
 
 }
