@@ -4,13 +4,40 @@
 </head>
   
   <!-- The text field -->
-<input type="text" value="Hello World" id="myInput">
+  Seed: 
+  <input type="password"  id="seed">
+  <br>
+
+   m: 
+  <input type="password"   id="m">
+  <br>
+  
+  
+  a: 
+  <input type="password"   id="a">
+  <br>
+  
+  c: 
+  <input type="password"   id="c">
+  <br>
+
+  
+  steps: 
+  <input type="password"   id="steps">
+  <br>
+
+  
+  n: 
+  <input type="password"   id="n">
+  <br>
+
+  
 
 <!-- The button used to copy the text -->
-<button onclick="myFunction()">Copy text</button>
+<button onclick="generateAndCopy()">Copy text</button>
   
   <script>
-    function myFunction() {
+    function generateAndCopy() {
   // Get the text field
   var copyText = document.getElementById("myInput");
 
@@ -20,9 +47,8 @@
 
    // Copy the text inside the text field
   navigator.clipboard.writeText(copyText.value);
+      
 
-  // Alert the copied text
-  alert("Copied the text: " + copyText.value);
 }
   </script>
 </html>
