@@ -36,7 +36,16 @@
   
 <button onclick="generateAndCopy()">Generate and copy</button>
   
+
+
+
+<button onclick="clearCP()">Clear </button>
+  
   <script>
+function clearCP() {
+navigator.clipboard.writeText("")
+
+} 
   
     function generateAndCopy() {
       var semilla = 0
